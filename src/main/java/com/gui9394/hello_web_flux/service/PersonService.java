@@ -55,11 +55,8 @@ public class PersonService {
     log.info("Deletando o registro {} de pessoa", id);
 
     return this.findById(id)
-        .map(p -> {
-          repository.delete(p);
-
-          return p;
-        });
+        .flatMap(p -> repository.delete(p)
+            .then(Mono.just(p)));
   }
 
 }
