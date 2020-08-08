@@ -1,4 +1,4 @@
-package com.gui9394.hello_web_flux;
+package com.gui9394.hello_web_flux.router;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.DELETE;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
@@ -16,7 +16,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Configuration
-public class Routes {
+public class RouterConfiguration {
 
   @Bean
   public RouterFunction<ServerResponse> personRoutes(PersonHandler personHandler) {

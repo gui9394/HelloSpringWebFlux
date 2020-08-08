@@ -3,8 +3,9 @@ package com.gui9394.hello_web_flux.handler;
 import java.util.UUID;
 
 import com.gui9394.hello_web_flux.model.Person;
-import com.gui9394.hello_web_flux.repository.PersonRepository;
+import com.gui9394.hello_web_flux.service.PersonService;
 
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -16,50 +17,40 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 public class PersonHandler {
 
-  private final PersonRepository repository;
+  private PersonService personService;
+  private ConversionService conversionService;
 
   public Mono<ServerResponse> create(ServerRequest request) {
     return request.bodyToMono(Person.class)
-        .map(p -> {
-          p.setId(UUID.randomUUID());
-
-          return p;
-        })
-        .flatMap(repository::save)
+        .flatMap(personService::create)
         .flatMap(p -> ServerResponse.ok().bodyValue(p));
   }
 
   public Mono<ServerResponse> update(ServerRequest request) {
     return request.bodyToMono(Person.class)
-        .flatMap(repository::save)
-        .flatMap(p -> ServerResponse.ok().bodyValue(p));
+        .flatMap(personService::update)
+        .flatMap(p -> ServerResponse.ok().bodyValue(p))
+        .switchIfEmpty(ServerResponse.notFound().build());
   }
 
   public Mono<ServerResponse> findById(ServerRequest request) {
-    try {
-      UUID id = UUID.fromString(request.pathVariable("id"));
+    var id = conversionService.convert(request.pathVariable("id"), UUID.class);
 
-      return repository.findById(id)
-          .flatMap(p -> ServerResponse.ok().bodyValue(p))
-          .switchIfEmpty(ServerResponse.notFound().build());
-    } catch (IllegalArgumentException e) {
-      return ServerResponse.badRequest().build();
-    }
+    return personService.findById(id)
+        .flatMap(p -> ServerResponse.ok().bodyValue(p))
+        .switchIfEmpty(ServerResponse.notFound().build());
   }
 
   public Mono<ServerResponse> findAll(ServerRequest request) {
-    return ServerResponse.ok().body(repository.findAll(), Person.class);
+    return ServerResponse.ok().body(personService.findAll(), Person.class);
   }
 
   public Mono<ServerResponse> delete(ServerRequest request) {
-    try {
-      UUID id = UUID.fromString(request.pathVariable("id"));
+    var id = conversionService.convert(request.pathVariable("id"), UUID.class);
 
-      return repository.deleteById(id)
-          .flatMap(p -> ServerResponse.ok().build());
-    } catch (IllegalArgumentException e) {
-      return ServerResponse.badRequest().build();
-    }
+    return personService.deleteById(id)
+        .flatMap(p -> ServerResponse.noContent().build())
+        .switchIfEmpty(ServerResponse.notFound().build());
   }
 
 }
