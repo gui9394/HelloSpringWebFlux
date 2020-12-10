@@ -1,6 +1,6 @@
 # Hello Spring Web Flux
 
-Implementação de uma API utilizando Spring Web Flux com endpoints funcionais.
+Implementação de uma API utilizando Spring Web Flux.
 
 ## Referência
 
