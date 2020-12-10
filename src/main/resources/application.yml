@@ -8,3 +8,12 @@ spring:
       host: localhost
       port: 27017
       database: HelloWebFlux
+
+logging:
+  level:
+    com:
+      gui9394: DEBUG
+    org:
+      springframework:
+        data:
+          mongodb: DEBUG

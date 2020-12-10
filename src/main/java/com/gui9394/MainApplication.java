@@ -1,13 +1,13 @@
-package com.gui9394.hello_web_flux;
+package com.gui9394;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HelloWebFlux {
+public class MainApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HelloWebFlux.class, args);
+		SpringApplication.run(MainApplication.class, args);
 	}
 
 }
