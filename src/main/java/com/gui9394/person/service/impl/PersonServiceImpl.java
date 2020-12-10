@@ -1,6 +1,6 @@
 package com.gui9394.person.service.impl;
 
-import com.gui9394.common.service.ZipCodeService;
+import com.gui9394.address.service.ZipCodeService;
 import com.gui9394.person.dto.CreatePersonDto;
 import com.gui9394.person.model.Person;
 import com.gui9394.person.repository.PersonRepository;
@@ -25,7 +25,7 @@ public class PersonServiceImpl implements PersonService {
     private final PersonRepository personRepository;
 
     public Mono<Person> create(CreatePersonDto dto) {
-        final var createNewPerson = zipCodeService.getAddress(dto.getZipCode()) //
+        final var createNewPerson = zipCodeService.getAddress(dto.getZipCode(), dto.getNumber()) //
                 .flatMap(address -> personRepository.save( //
                         Person.create( //
                                 dto.getFirstName(), //

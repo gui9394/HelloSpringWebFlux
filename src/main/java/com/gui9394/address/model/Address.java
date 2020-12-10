@@ -1,4 +1,4 @@
-package com.gui9394.common.model;
+package com.gui9394.address.model;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -17,6 +17,8 @@ public class Address {
     private String zipCode;
 
     private String street;
+
+    private String number;
 
     private String district;
 

@@ -3,7 +3,7 @@ package com.gui9394.person.model;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import com.gui9394.common.model.Address;
+import com.gui9394.address.model.Address;
 
 import org.springframework.data.annotation.Id;
 
@@ -21,7 +21,7 @@ import lombok.ToString;
 public class Person {
 
     @Id
-    private UUID id = UUID.randomUUID();
+    private UUID id;
 
     private String firstName;
 
@@ -42,6 +42,5 @@ public class Person {
     ) {
         return new Person(UUID.randomUUID(), firstName, lastName, taxId, dateOfBirth, address);
     }
-
 
 }

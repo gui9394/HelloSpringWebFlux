@@ -1,14 +1,14 @@
-package com.gui9394.via_cep.dto;
+package com.gui9394.address.service.via_cep;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.gui9394.common.model.Address;
+import com.gui9394.address.model.Address;
 
 import lombok.Getter;
 import lombok.ToString;
 
 @Getter
 @ToString
-public class ViaCepAddressDto {
+class ViaCepAddressDto {
 
     @JsonProperty("cep")
     private String zipCode;
@@ -25,10 +25,11 @@ public class ViaCepAddressDto {
     @JsonProperty("uf")
     private String state;
 
-    public Address toEntity() {
+    public Address toEntity(String number) {
         return Address.builder() //
                 .zipCode(zipCode.replaceAll("\\D", "")) //
                 .street(street) //
+                .number(number) //
                 .district(district) //
                 .city(city) //
                 .state(state) //
