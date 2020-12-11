@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 public class Address {
 
-  private String zipCode;
+  private String postalCode;
 
   private String street;
 
@@ -24,6 +24,6 @@ public class Address {
 
   private String city;
 
-  private String state;
+  private BrazilianState state;
 
 }

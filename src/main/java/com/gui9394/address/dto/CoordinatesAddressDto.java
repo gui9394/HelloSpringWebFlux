@@ -1,18 +1,20 @@
 package com.gui9394.address.dto;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.ToString;
 
 @Getter
 @ToString
-public class ZipCodeAddressDto implements AddressDto {
+public class CoordinatesAddressDto implements AddressDto {
 
-  @Pattern(regexp = "^\\d{8}$")
-  @NotBlank
-  private String zipCode;
+  @NotNull
+  private Double latitude;
+
+  @NotNull
+  private Double longitude;
 
   @NotBlank
   private String number;

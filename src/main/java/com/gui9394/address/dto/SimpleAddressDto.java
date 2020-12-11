@@ -3,6 +3,8 @@ package com.gui9394.address.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import com.gui9394.address.model.BrazilianState;
+
 import lombok.Getter;
 import lombok.ToString;
 
@@ -11,7 +13,7 @@ import lombok.ToString;
 public class SimpleAddressDto implements AddressDto {
 
   @Pattern(regexp = "^\\d{8}$")
-  private String zipCode;
+  private String postalCode;
 
   @NotBlank
   private String street;
@@ -26,6 +28,6 @@ public class SimpleAddressDto implements AddressDto {
   private String city;
 
   @NotBlank
-  private String state;
+  private BrazilianState state;
 
 }
