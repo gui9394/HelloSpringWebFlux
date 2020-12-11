@@ -17,22 +17,22 @@ import lombok.ToString;
 @ToString
 public class CreatePersonDto {
 
-    @NotBlank
-    private String firstName;
+  @NotBlank
+  private String firstName;
 
-    @NotBlank
-    private String lastName;
+  @NotBlank
+  private String lastName;
 
-    @Pattern(regexp = "^\\d{11}$")
-    @NotBlank
-    private String taxId;
+  @Pattern(regexp = "^\\d{11}$")
+  @NotBlank
+  private String taxId;
 
-    @PastOrPresent
-    @NotNull
-    private LocalDate dateOfBirth;
+  @PastOrPresent
+  @NotNull
+  private LocalDate dateOfBirth;
 
-    @Valid
-    @NotNull
-    private AddressDto address;
+  @Valid
+  @NotNull
+  private AddressDto address;
 
 }

@@ -20,27 +20,27 @@ import lombok.ToString;
 @ToString
 public class Person {
 
-    @Id
-    private UUID id;
+  @Id
+  private UUID id;
 
-    private String firstName;
+  private String firstName;
 
-    private String lastName;
+  private String lastName;
 
-    private String taxId;
+  private String taxId;
 
-    private LocalDate dateOfBirth;
+  private LocalDate dateOfBirth;
 
-    private Address address;
+  private Address address;
 
-    public static Person create(//
-            String firstName, //
-            String lastName, //
-            String taxId, //
-            LocalDate dateOfBirth, //
-            Address address //
-    ) {
-        return new Person(UUID.randomUUID(), firstName, lastName, taxId, dateOfBirth, address);
-    }
+  public static Person create(//
+      String firstName, //
+      String lastName, //
+      String taxId, //
+      LocalDate dateOfBirth, //
+      Address address //
+  ) {
+    return new Person(UUID.randomUUID(), firstName, lastName, taxId, dateOfBirth, address);
+  }
 
 }

@@ -8,8 +8,8 @@ import reactor.core.publisher.Mono;
 
 public interface PersonService {
 
-    public Mono<Person> create(CreatePersonDto dto);
+  public Mono<Person> create(CreatePersonDto dto);
 
-    public Flux<Person> findAll();
+  public Flux<Person> findAll();
 
 }

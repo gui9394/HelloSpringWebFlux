@@ -14,16 +14,16 @@ import lombok.ToString;
 @ToString
 public class Address {
 
-    private String zipCode;
+  private String zipCode;
 
-    private String street;
+  private String street;
 
-    private String number;
+  private String number;
 
-    private String district;
+  private String district;
 
-    private String city;
+  private String city;
 
-    private String state;
+  private String state;
 
 }

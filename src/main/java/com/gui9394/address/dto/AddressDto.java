@@ -1,31 +1,16 @@
 package com.gui9394.address.dto;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-import lombok.Getter;
-import lombok.ToString;
-
-@Getter
-@ToString
-public class AddressDto implements AddressAbstractDto {
-
-    @Pattern(regexp = "^\\d$")
-    private String zipCode;
-
-    @NotBlank
-    private String street;
-
-    @NotBlank
-    private String number;
-
-    @NotBlank
-    private String district;
-
-    @NotBlank
-    private String city;
-
-    @NotBlank
-    private String state;
-
+@JsonTypeInfo( //
+    use = JsonTypeInfo.Id.NAME, //
+    include = JsonTypeInfo.As.PROPERTY, //
+    property = "type", //
+    defaultImpl = SimpleAddressDto.class)
+@JsonSubTypes({ //
+    @Type(value = ZipCodeAddressDto.class, name = "zipCode"), //
+    @Type(value = SimpleAddressDto.class, name = "simple") })
+public interface AddressDto {
 }

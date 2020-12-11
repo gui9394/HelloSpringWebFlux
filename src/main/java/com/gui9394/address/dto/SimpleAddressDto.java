@@ -8,13 +8,24 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class ZipCodeAddressDto implements AddressDto {
+public class SimpleAddressDto implements AddressDto {
 
   @Pattern(regexp = "^\\d{8}$")
-  @NotBlank
   private String zipCode;
 
   @NotBlank
+  private String street;
+
+  @NotBlank
   private String number;
+
+  @NotBlank
+  private String district;
+
+  @NotBlank
+  private String city;
+
+  @NotBlank
+  private String state;
 
 }

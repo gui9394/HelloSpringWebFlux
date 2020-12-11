@@ -1,12 +1,12 @@
 package com.gui9394.address.service;
 
 import com.gui9394.address.dto.ZipCodeAddressDto;
-import com.gui9394.address.model.Address;
 
-import reactor.core.publisher.Mono;
+public interface ZipCodeService extends AddressProvider<ZipCodeAddressDto> {
 
-public interface ZipCodeService {
-
-    Mono<Address> getAddress(ZipCodeAddressDto dto);
+  @Override
+  default Class<ZipCodeAddressDto> getProviderType() {
+    return ZipCodeAddressDto.class;
+  }
 
 }

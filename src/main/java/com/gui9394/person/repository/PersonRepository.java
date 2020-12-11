@@ -12,6 +12,6 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface PersonRepository extends ReactiveCrudRepository<Person, UUID> {
 
-    Mono<Person> findByTaxId(String taxId);
+  Mono<Person> findByTaxId(String taxId);
 
 }

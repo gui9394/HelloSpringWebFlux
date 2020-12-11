@@ -19,16 +19,16 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 public class PersonController {
 
-    private final PersonService service;
+  private final PersonService service;
 
-    @PostMapping
-    public Mono<Person> create(@RequestBody @Valid CreatePersonDto dto) {
-        return service.create(dto);
-    }
+  @PostMapping
+  public Mono<Person> create(@RequestBody @Valid CreatePersonDto dto) {
+    return service.create(dto);
+  }
 
-    @GetMapping
-    public Flux<Person> findAll() {
-        return service.findAll();
-    }
+  @GetMapping
+  public Flux<Person> findAll() {
+    return service.findAll();
+  }
 
 }

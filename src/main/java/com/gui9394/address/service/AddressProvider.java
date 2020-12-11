@@ -5,8 +5,10 @@ import com.gui9394.address.model.Address;
 
 import reactor.core.publisher.Mono;
 
-public interface AddressService {
+public interface AddressProvider<T extends AddressDto> {
 
-  Mono<Address> getAddress(AddressDto dto);
+  Class<T> getProviderType();
+
+  Mono<Address> getAddress(T dto);
 
 }
