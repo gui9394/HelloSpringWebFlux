@@ -1,6 +1,7 @@
 package com.gui9394.address.dto;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import com.gui9394.address.model.BrazilianState;
@@ -27,7 +28,7 @@ public class SimpleAddressDto implements AddressDto {
   @NotBlank
   private String city;
 
-  @NotBlank
+  @NotNull
   private BrazilianState state;
 
 }
