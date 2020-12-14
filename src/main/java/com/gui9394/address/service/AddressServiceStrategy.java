@@ -5,9 +5,9 @@ import com.gui9394.address.model.Address;
 
 import reactor.core.publisher.Mono;
 
-public interface AddressProvider<T extends AddressDto> {
+public interface AddressServiceStrategy<T extends AddressDto> {
 
-  Class<T> getProviderType();
+  Class<T> getStrategyType();
 
   Mono<Address> getAddress(T dto);
 

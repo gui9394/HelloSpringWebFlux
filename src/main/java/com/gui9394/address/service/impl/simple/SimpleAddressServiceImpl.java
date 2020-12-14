@@ -1,4 +1,4 @@
-package com.gui9394.address.service.simple;
+package com.gui9394.address.service.impl.simple;
 
 import com.gui9394.address.dto.SimpleAddressDto;
 import com.gui9394.address.model.Address;

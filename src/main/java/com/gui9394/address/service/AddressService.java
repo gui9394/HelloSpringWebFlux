@@ -7,6 +7,6 @@ import reactor.core.publisher.Mono;
 
 public interface AddressService {
 
-  Mono<Address> getAddress(AddressDto dto);
+  <T extends AddressDto> Mono<Address> getAddress(T dto);
 
 }

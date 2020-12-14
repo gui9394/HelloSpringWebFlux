@@ -1,4 +1,4 @@
-package com.gui9394.address.service.open_street_map;
+package com.gui9394.address.service.impl.open_street_map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gui9394.address.model.BrazilianState;
@@ -29,7 +29,7 @@ public class OpenStreetMapResponseDto {
     private String city;
 
     private BrazilianState state;
-    
+
     @JsonProperty("state")
     public void setState(String state) {
       this.state = BrazilianState.valueOfName(state);

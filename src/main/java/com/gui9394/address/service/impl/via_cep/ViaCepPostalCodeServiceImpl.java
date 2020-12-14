@@ -1,4 +1,4 @@
-package com.gui9394.address.service.via_cep;
+package com.gui9394.address.service.impl.via_cep;
 
 import java.util.function.Function;
 
@@ -6,6 +6,7 @@ import com.gui9394.address.dto.PostalCodeAddressDto;
 import com.gui9394.address.model.Address;
 import com.gui9394.address.service.PostalCodeService;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -20,14 +21,15 @@ import reactor.core.publisher.Mono;
 @ToString
 public class ViaCepPostalCodeServiceImpl implements PostalCodeService {
 
-  private final WebClient webClient = WebClient.builder().build();
+  private final WebClient webClient = WebClient.builder() //
+      .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE) //
+      .build();
 
   @Override
   public Mono<Address> getAddress(PostalCodeAddressDto dto) {
     return webClient //
         .get() //
         .uri("viacep.com.br/ws/{zipCode}/json/", dto.getPostalCode()) //
-        .accept(MediaType.APPLICATION_JSON) //
         .retrieve() //
         .bodyToMono(ViaCepAddressDto.class) //
         .map(mapToAddress(dto.getNumber())) //

@@ -1,12 +1,13 @@
-package com.gui9394.address.service.open_street_map;
+package com.gui9394.address.service.impl.open_street_map;
 
 import java.util.function.Function;
 
 import com.gui9394.address.dto.CoordinatesAddressDto;
 import com.gui9394.address.model.Address;
 import com.gui9394.address.service.CoordinatesAddressService;
-import com.gui9394.address.service.open_street_map.OpenStreetMapResponseDto.OpenStreetMapAddressDto;
+import com.gui9394.address.service.impl.open_street_map.OpenStreetMapResponseDto.OpenStreetMapAddressDto;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -21,7 +22,9 @@ import reactor.core.publisher.Mono;
 @ToString
 public class OpenStreetMapCoordinatesAddressServiceImpl implements CoordinatesAddressService {
 
-  private final WebClient webClient = WebClient.builder().build();
+  private final WebClient webClient = WebClient.builder() //
+      .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE) //
+      .build();
 
   @Override
   public Mono<Address> getAddress(CoordinatesAddressDto dto) {
@@ -30,7 +33,6 @@ public class OpenStreetMapCoordinatesAddressServiceImpl implements CoordinatesAd
             "https://nominatim.openstreetmap.org/reverse?format=json&zoom=18&addressdetails=1&lat={latitude}&lon={longitude}",
             dto.getLatitude(), //
             dto.getLongitude())
-        .accept(MediaType.APPLICATION_JSON) //
         .retrieve() //
         .bodyToMono(OpenStreetMapResponseDto.class) //
         .map(OpenStreetMapResponseDto::getAddress) //

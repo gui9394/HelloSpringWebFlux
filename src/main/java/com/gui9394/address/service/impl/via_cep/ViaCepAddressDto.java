@@ -1,4 +1,4 @@
-package com.gui9394.address.service.via_cep;
+package com.gui9394.address.service.impl.via_cep;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gui9394.address.model.BrazilianState;
