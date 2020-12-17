@@ -14,6 +14,7 @@ import lombok.ToString;
 public class SimpleAddressDto implements AddressDto {
 
   @Pattern(regexp = "^\\d{8}$")
+  @NotBlank
   private String postalCode;
 
   @NotBlank

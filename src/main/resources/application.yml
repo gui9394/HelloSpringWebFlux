@@ -9,6 +9,11 @@ spring:
       port: 27017
       database: HelloWebFlux
 
+    web:
+      pageable:
+        max-page-size: 100
+        default-page-size: 20
+
 logging:
   level:
     com:
